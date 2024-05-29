@@ -5,11 +5,12 @@ import { connectDB } from "./db.js";
 async function main() {
   try {
     await connectDB();
-    app.listen(PORT);
-    console.log(`Listening on port http://localhost:${PORT}`);
-    console.log(`Environment: ${process.env.NODE_ENV}`)
+    app.listen(PORT, () => {
+      console.log(`Listening on port http://localhost:${PORT}`);
+      console.log(`Environment: ${process.env.NODE_ENV}`);
+    });
   } catch (error) {
-    console.error(error);
+    console.error('Failed to start server:', error);
   }
 }
 
